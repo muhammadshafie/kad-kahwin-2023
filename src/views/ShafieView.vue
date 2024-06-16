@@ -9,12 +9,12 @@
     > -->
 
     <!-- ============ First Section ============ -->
-    <div class="bg-white h-full w-full px-5 pt-6">
+    <div class="bg-white h-full w-full px-5 pt-5">
       <div class="mb-8">
         <div
-          class="h-[80vh] bg text-dark cursor-pointer block rounded-lg bg-gray-100 flex justify-center items-center flex-col text-center p-5 transform transition-all duration-300 scale-100 hover:scale-95"
+          class="h-[95vh] bg text-dark cursor-pointer block rounded-lg bg-gray-100 flex justify-center items-center flex-col text-center p-4 transform transition-all duration-300 scale-100 hover:scale-[.98]"
           style="
-            background-image: url('https://drive.google.com/uc?export=view&id=1rSgKWC1GYynxPMubhF4NQfhclbbJ_yGO');
+            background-image: url('https://shafieramli.com/kad-kahwin/images/background/bg-mint-green-1.jpg');
             background-position: center;
             background-size: cover;
           "
@@ -35,17 +35,17 @@
       <!-- ============ Walimatul Urus Section ============ -->
       <div class="mb-8">
         <div
-          class="cursor-pointer block rounded-lg bg-gray-800 flex justify-center px-5 py-24 transform transition-all duration-300 scale-100 hover:scale-95"
+          class="cursor-pointer block rounded-lg bg-[#c9e4da] flex justify-center px-5 py-24 transform transition-all duration-300 scale-100 hover:scale-[.98]"
         >
           <div class="absolute top-0 -mt-3">
             <div
-              class="rounded-full bg-indigo-500 align-center text-white text-xs py-1 px-2 leading-none"
+              class="rounded-full bg-[#348784] align-center text-white text-xs py-1 px-2 leading-none"
             >
               <span class="text-center">Undangan</span>
             </div>
           </div>
 
-          <div class="text-white text-center">
+          <div class="text-black text-center">
             <h1
               class="text-xl font-bold pb-8"
               style="font-family: 'Noto Naskh Arabic', serif; font-size: 40px"
@@ -54,11 +54,11 @@
             </h1>
             <p>Dengan penuh kesyukuran, kami</p>
             <div class="py-5">
-              <h2 class="text-white uppercase text-2xl font-bold leading-tight py-2">
+              <h2 class="text-black uppercase text-2xl font-bold leading-tight py-2">
                 mohd ramli bin miswun
               </h2>
               <p>&amp;</p>
-              <h2 class="text-white uppercase text-2xl font-bold leading-tight py-2">
+              <h2 class="text-black uppercase text-2xl font-bold leading-tight py-2">
                 noriza binti yusof
               </h2>
             </div>
@@ -84,16 +84,16 @@
       <!-- ============ Detail Section ============ -->
       <div class="mb-8">
         <div
-          class="cursor-pointer block rounded-lg bg-gray-800 flex justify-center px-5 py-24 transform transition-all duration-300 scale-100 hover:scale-95"
+          class="cursor-pointer block rounded-lg bg-[#c9e4da] flex justify-center px-5 py-24 transform transition-all duration-300 scale-100 hover:scale-[.98]"
         >
           <div class="absolute top-0 -mt-3">
             <div
-              class="rounded-full bg-indigo-500 align-center text-white text-xs py-1 px-2 leading-none"
+              class="rounded-full bg-[#348784] align-center text-white text-xs py-1 px-2 leading-none"
             >
               <span class="text-center">Lokasi, Tarik, Masa</span>
             </div>
           </div>
-          <div class="text-white text-center">
+          <div class="text-black text-center">
             <p>Tempat</p>
             <p>NO 11 LORONG INTAN SATU TAMAN BATU TIGA 40150 SHAH ALAM</p>
             <p>Tarikh</p>
@@ -104,16 +104,88 @@
         </div>
       </div>
 
+      <!-- ============ Countdown Section ============ -->
+      <div class="mb-8">
+        <div
+          class="cursor-pointer block rounded-lg bg-[#c9e4da] flex justify-center p-5 transform transition-all duration-300 scale-100 hover:scale-[.98]"
+        >
+          <div class="absolute top-0 -mt-3">
+            <div
+              class="rounded-full bg-[#348784] align-center text-white text-xs py-1 px-2 leading-none"
+            >
+              <span class="text-center">Countdown</span>
+            </div>
+          </div>
+          <Countdown deadline="2024-12-01 00:00:00" mainColor="#000" secondFlipColor="#000" countdownSize="3rem" labelSize="1.5rem" :flipAnimation="false" :labels="{days: 'Hari',hours: 'Jam',minutes: 'Minit',seconds: 'Saat'}"/>
+        </div>
+      </div>
+
+      <!-- ============ Aturcara Section ============ -->
+      <div class="mb-8">
+        <div
+          class="cursor-pointer block rounded-lg bg-[#c9e4da] flex justify-center p-5 transform transition-all duration-300 scale-100 hover:scale-[.98]"
+        >
+          <div class="absolute top-0 -mt-3">
+            <div
+              class="rounded-full bg-[#348784] align-center text-white text-xs py-1 px-2 leading-none"
+            >
+              <span class="text-center">Aturcara Majlis</span>
+            </div>
+          </div>
+          <div class="text-black">
+              <!-- <p>11:00 AM	MAJLIS BERMULA</p>
+              <p>12:30 PM	KETIBAAN PENGANTIN</p>
+              <p>5:00 PM	MAJLIS BERAKHIR</p> -->
+              <!-- Vertical Timeline #1 -->
+              <div class="">
+                  <!-- Item #1 -->
+                  <div class="relative pl-8 sm:pl-32 py-2 group">
+                      <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-[#348784] sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-[#348784] after:border-4 after:box-content after:border-[#348784] after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
+                          <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">11:00 am</time>
+                          <div class="text-md font-bold text-slate-900 translate-y-1">MAJLIS BERMULA</div>
+                      </div>
+                  </div>
+
+                  <!-- Item #2 -->
+                  <div class="relative pl-8 sm:pl-32 py-2 group">
+                      <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-[#348784] sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-[#348784] after:border-4 after:box-content after:border-[#348784] after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
+                          <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">12:00 pm</time>
+                          <div class="text-md font-bold text-slate-900 translate-y-1">KETIBAAN PENGANTIN</div>
+                      </div>
+                  </div>
+
+                  <!-- Item #3 -->
+                  <div class="relative pl-8 sm:pl-32 py-2 group">
+                      <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-[#348784] sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-[#348784] after:border-4 after:box-content after:border-[#348784] after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
+                          <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">03:00 pm</time>
+                          <div class="text-md font-bold text-slate-900 translate-y-1">MAJLIS BERAKHIR</div>
+                      </div>
+                  </div>
+
+                  <!-- Item #4 -->
+                  <div class="relative pl-8 sm:pl-32 py-2 group">
+                      <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-[#348784] sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-[#348784] after:border-4 after:box-content after:border-[#348784] after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
+                          <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">05:00 pm</time>
+                          <div class="text-md font-bold text-slate-900 translate-y-1">MAJLIS BERAKHIR</div>
+                      </div>
+                  </div>
+                </div>
+              <!-- End: Vertical Timeline #1 -->
+          </div>
+        </div>
+      </div>
+      
+
       <!-- =========== Sticky Navigation =========== -->
       <div
-        class="sticky bottom-2 p-5 px-6 m-2 flex items-center justify-between bg-gray-900 shadow-3xl text-gray-400 rounded-2xl cursor-pointer"
+        class="sticky bottom-2 p-5 px-6 m-2 flex items-center justify-between backdrop-blur-sm bg-white/20 shadow-3xl text-gray-400 rounded-2xl cursor-pointer"
       >
-        <div class="flex flex-col items-center transition ease-in duration-200 hover:text-blue-400">
+        <div class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-blue-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            fill="#fff"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            stroke-width="2"
             stroke="currentColor"
             data-slot="icon"
             class="w-6 h-6"
@@ -130,12 +202,12 @@
             />
           </svg>
         </div>
-        <div class="flex flex-col items-center transition ease-in duration-200 hover:text-blue-400">
+        <div class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-blue-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            fill="#fff"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            stroke-width="2"
             stroke="currentColor"
             data-slot="icon"
             class="w-6 h-6"
@@ -147,15 +219,15 @@
             />
           </svg>
         </div>
-        <div class="flex flex-col items-center hover:text-blue-400">
+        <div class="flex flex-col items-center text-[#348784] hover:text-blue-400">
           <div
-            class="absolute bottom-5 shadow-2xl text-center flex items-center justify-center rounded-full border-4 text-3xl border-gray-50 hover:border-blue-500 bg-blue-500 w-20 h-20 p-2 text-white transition ease-in duration-200"
+            class="absolute bottom-5 shadow-2xl text-center flex items-center justify-center rounded-full border-4 text-3xl border-gray-50 hover:border-blue-500 hover:bg-blue-500 bg-[#348784] w-20 h-20 p-2 text-white transition ease-in duration-200"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              stroke-width="2"
               stroke="currentColor"
               data-slot="icon"
               class="w-6 h-6"
@@ -169,13 +241,14 @@
             <!-- <span>RSVP</span> -->
           </div>
         </div>
-        <div class="flex flex-col items-center transition ease-in duration-200 hover:text-blue-400">
+        <div class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-blue-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
+            fill="#fff"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            data-slot="icon"
+            class="w-6 h-6"
           >
             <path
               stroke-linecap="round"
@@ -185,12 +258,12 @@
             ></path>
           </svg>
         </div>
-        <div class="flex flex-col items-center transition ease-in duration-200 hover:text-blue-400">
+        <div class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-blue-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            fill="#fff"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            stroke-width="2"
             stroke="currentColor"
             data-slot="icon"
             class="w-6 h-6"
@@ -208,6 +281,13 @@
   </div>
 </template>
 <script>
-export default {}
+import {Countdown} from 'vue3-flip-countdown'
+
+export default {
+  name:'ShafiePage',
+  components: {
+    Countdown
+  }
+}
 </script>
 <style lang=""></style>
