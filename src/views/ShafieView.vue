@@ -286,7 +286,7 @@ import {Countdown} from 'vue3-flip-countdown'
 export default {
   name:'ShafiePage',
   components: {
-    Countdown
+    Countdown,
   }
 }
 </script>
