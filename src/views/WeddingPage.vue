@@ -21,13 +21,14 @@
           >
             <h4 class="font-bold">WALIMATUL URUS</h4>
             <div class="py-5">
-              <h1 class="text-5xl font-bold">Shafie</h1>
+              <h1 class="text-5xl font-bold capitalize">{{webData.first_name}}</h1>
               <h1 class="text-3xl font-bold">&</h1>
-              <h1 class="text-5xl font-bold">Nadiah</h1>
+              <h1 class="text-5xl font-bold capitalize">{{webData.second_name}}</h1>
             </div>
             <div class="pb-3">
-              <h3 class="text-xl italic">Ahad, 1 Disember 2024</h3>
-              <h3 class="py-1 italic">29 Jamadilawal 1446</h3>
+              <h3 class="text-xl italic">{{fullDate}}</h3>
+              <h3 class="py-1 italic">{{ hijriDate}}</h3>
+
             </div>
           </div>
         </div>
@@ -44,8 +45,7 @@
                 <span class="text-center">Undangan</span>
               </div>
             </div>
-  
-            <div class="text-black text-center">
+            <div class="text-black text-center" >
               <h1
                 class="text-xl font-bold pb-8"
                 style="font-family: 'Noto Naskh Arabic', serif; font-size: 40px"
@@ -55,11 +55,11 @@
               <p>Dengan penuh kesyukuran, kami</p>
               <div class="py-5">
                 <h2 class="text-black uppercase text-2xl font-bold leading-tight py-2">
-                  mohd ramli bin miswun
+                  {{webData.inviting_name_1}}
                 </h2>
                 <p>&amp;</p>
                 <h2 class="text-black uppercase text-2xl font-bold leading-tight py-2">
-                  noriza binti yusof
+                  {{webData.inviting_name_2}}
                 </h2>
               </div>
               <p>
@@ -69,11 +69,11 @@
               <div class="py-5">
                 <div class="py-3 bg-white rounded-lg shadow-lg text-dark">
                   <h4 class="text-black uppercase font-bold leading-tight">
-                    Muhammad Shafie bin Mohd Ramli
+                    {{webData.bride_name_1}}
                   </h4>
                   <p class="text-black uppercase font-bold">&amp;</p>
                   <h4 class="text-black uppercase font-bold leading-tight">
-                    Faizatul Nadiah binti Salihuddin
+                    {{webData.bride_name_2}}
                   </h4>
                 </div>
               </div>
@@ -97,7 +97,7 @@
               <p>Tempat</p>
               <p>{{weddingData.location}}</p>
               <p>Tarikh</p>
-              <p>Ahad, 22 Oktober 2023</p>
+              <p>{{fullDate}}</p>
               <p>Masa</p>
               <p>{{weddingData.startTime}} - {{weddingData.endTime}}</p>
             </div>
@@ -113,7 +113,7 @@
               <div
                 class="rounded-full bg-[#348784] align-center text-white text-xs py-1 px-2 leading-none"
               >
-                <span class="text-center">Countdown</span>
+                <span class="text-center">Pengiraan Detik Majlis Perkahwinan</span>
               </div>
             </div>
             <Countdown deadline="2024-12-01 00:00:00" mainColor="#000" secondFlipColor="#000" countdownSize="3rem" labelSize="1.5rem" :flipAnimation="false" :labels="{days: 'Hari',hours: 'Jam',minutes: 'Minit',seconds: 'Saat'}"/>
@@ -180,7 +180,7 @@
         <div
           class="sticky bottom-2 p-5 px-6 m-2 flex items-center justify-between backdrop-blur-sm bg-white/20 shadow-3xl text-gray-400 rounded-2xl cursor-pointer"
         >
-          <div class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-blue-400">
+          <div @click="openMapOption"  class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-[#c9e4da]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#fff"
@@ -202,7 +202,7 @@
               />
             </svg>
           </div>
-          <div @click="addToGoogleCalendar" class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-blue-400">
+          <div @click="addToGoogleCalendar" class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-[#c9e4da]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#fff"
@@ -219,9 +219,9 @@
               />
             </svg>
           </div>
-          <div class="flex flex-col items-center text-[#348784] hover:text-blue-400">
+          <div class="flex flex-col items-center text-[#348784] hover:text-[#c9e4da]">
             <div
-              class="absolute bottom-5 shadow-2xl text-center flex items-center justify-center rounded-full border-4 text-3xl border-gray-50 hover:border-blue-500 hover:bg-blue-500 bg-[#348784] w-20 h-20 p-2 text-white transition ease-in duration-200"
+              class="absolute bottom-5 shadow-2xl text-center flex items-center justify-center rounded-full border-4 text-3xl border-gray-50 hover:border-[#348784] hover:bg-[#c9e4da] bg-[#348784] w-20 h-20 p-2 text-white transition ease-in duration-200"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -241,7 +241,7 @@
               <!-- <span>RSVP</span> -->
             </div>
           </div>
-          <div class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-blue-400">
+          <div @click="addBookmark" class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-[#c9e4da]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#fff"
@@ -258,7 +258,7 @@
               ></path>
             </svg>
           </div>
-          <div class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-blue-400">
+          <div @click="openContactOption" class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-[#c9e4da]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#fff"
@@ -278,27 +278,198 @@
         </div>
       </div>
       <!-- </div> -->
+
+      <!-- ======================== Dialog Map ======================== -->
+      <TransitionRoot appear :show="isOpen" as="template">
+        <Dialog :initialFocus="dialogRef" as="div" @close="closeModal" class="relative z-10 ">
+          <TransitionChild
+            as="template"
+            enter="duration-300 ease-out"
+            enter-from="opacity-0"
+            enter-to="opacity-100"
+            leave="duration-200 ease-in"
+            leave-from="opacity-100"
+            leave-to="opacity-0"
+          >
+            <div class="fixed inset-0 bg-black/25" />
+          </TransitionChild>
+    
+          <div class="fixed inset-0 overflow-y-auto">
+            <div
+              class="flex min-h-full items-center justify-center p-4 text-center"
+            >
+              <TransitionChild
+                as="template"
+                enter="duration-300 ease-out"
+                enter-from="opacity-0 scale-95"
+                enter-to="opacity-100 scale-100"
+                leave="duration-200 ease-in"
+                leave-from="opacity-100 scale-100"
+                leave-to="opacity-0 scale-95"
+              >
+                <DialogPanel
+                  class="w-full max-w-2xl transform overflow-hidden rounded-2xl p-6 text-left align-middle shadow-xl transition-all backdrop-blur-lg bg-white/20"
+                >
+                    <div class="flex items-start justify-between">
+                      <DialogTitle
+                        as="h3"
+                        class="text-lg font-medium bold leading-6 text-gray-900 flex"
+                      >Navigation App 
+                      <MapPinIcon class="h-6 w-6 ml-1 text-gray-900" />
+
+                      </DialogTitle>
+                      <XMarkIcon 
+                        @click="closeModal"
+                        class="cursor-pointer h-8 w-8 p-1.5 ml-auto text-gray-500 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                      />
+                      <button ref="dialogRef"  /> 
+                    </div>
+                    <div class="mt-2 flex gap-4">
+                      <a  :href="`https://maps.google.com/maps?daddr=${weddingData.coordinate}&amp;ll=`" target="_blank">
+                        <img class="h-16 w-16 rounded-2xl" src="@/assets/google-maps-logo.svg">
+                      </a>
+                      <a :href="`https://www.waze.com/ul?ll=${weddingData.coordinate}&navigate=yes&zoom=17`" target="_blank">
+                        <img class="h-16 w-16 rounded-2xl" src="@/assets/waze-logo.png">
+                      </a>
+                      <a :href="`maps://maps.google.com/maps?daddr=${weddingData.coordinate}&amp;ll=`">
+                        <img class="h-16 w-16 rounded-2xl" src="@/assets/apple-map-logo.svg">
+                      </a>
+                    </div>
+                
+                </DialogPanel>
+              </TransitionChild>
+            </div>
+          </div>
+        </Dialog>
+      </TransitionRoot>
       
+
+      <!-- ======================== Dialog Map ======================== -->
+      <TransitionRoot appear :show="isOpenContact" as="template">
+        <Dialog :initialFocus="dialogRef" as="div" @close="closeModalContact" class="relative z-10 ">
+          <TransitionChild
+            as="template"
+            enter="duration-300 ease-out"
+            enter-from="opacity-0"
+            enter-to="opacity-100"
+            leave="duration-200 ease-in"
+            leave-from="opacity-100"
+            leave-to="opacity-0"
+          >
+            <div class="fixed inset-0 bg-black/25" />
+          </TransitionChild>
+    
+          <div class="fixed inset-0 overflow-y-auto">
+            <div
+              class="flex min-h-full items-center justify-center p-4 text-center"
+            >
+              <TransitionChild
+                as="template"
+                enter="duration-300 ease-out"
+                enter-from="opacity-0 scale-95"
+                enter-to="opacity-100 scale-100"
+                leave="duration-200 ease-in"
+                leave-from="opacity-100 scale-100"
+                leave-to="opacity-0 scale-95"
+              >
+                <DialogPanel
+                  class="w-full max-w-2xl transform overflow-hidden rounded-2xl p-6 text-left align-middle shadow-xl transition-all backdrop-blur-lg bg-white/20"
+                >
+                    <div class="flex items-start justify-between">
+                      <DialogTitle
+                        as="h3"
+                        class="text-lg font-medium bold leading-6 text-gray-900 flex"
+                      >Navigation App 
+                      <MapPinIcon class="h-6 w-6 ml-1 text-gray-900" />
+
+                      </DialogTitle>
+                      <XMarkIcon 
+                        @click="closeModalContact"
+                        class="cursor-pointer h-8 w-8 p-1.5 ml-auto text-gray-500 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                      />
+                      <button ref="dialogRef"  /> 
+                    </div>
+                    <div class="mt-2 flex row gap-4">
+                      <a class="col" :href="`tel:${webData.contact_1}`" target="_blank">
+                        <div class="flex gap-1">
+                          <PhoneIcon class="h-6 w-6 text-gray-900" />
+                          <h3 class="ml-2 text-gray-900 text-balance">{{webData.contactName_1}}</h3>
+                        </div>
+                      </a>
+                      
+                      <a class="col" :href="`tel:${webData.contact_2}`" target="_blank">
+                        <div class="flex gap-1">
+                          <PhoneIcon class="h-6 w-6 text-gray-900" />
+                          <h3 class="ml-2 text-gray-900 text-balance">{{webData.contactName_2}}</h3>
+                        </div>
+                      </a>
+                    </div>
+                </DialogPanel>
+              </TransitionChild>
+            </div>
+          </div>
+        </Dialog>
+      </TransitionRoot>
+
     </div>
   </template>
 <script>
-import {Countdown} from 'vue3-flip-countdown'
+import { Countdown } from 'vue3-flip-countdown'
 import { useStore } from '@/stores/store';
 import { storeToRefs } from 'pinia';
-import { onMounted, computed,ref } from 'vue';
+import { onMounted, computed, ref, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
+import { convertToHijri } from "@/utils/convertToHijri"
+import { convertDateToMalay } from "@/utils/convertDateToMalay"
+import {
+  TransitionRoot,
+  TransitionChild,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+} from '@headlessui/vue';
+import { XMarkIcon,ArrowRightCircleIcon,MapPinIcon,PhoneIcon } from '@heroicons/vue/24/outline';
 
 export default {
     name: "WeddingPage",
     components:{
-        Countdown
+        Countdown,
+        TransitionRoot,
+        TransitionChild,
+        Dialog,
+        DialogPanel,
+        DialogTitle,
+        XMarkIcon,
+        ArrowRightCircleIcon,
+        MapPinIcon,
+        PhoneIcon
     },
     setup() {
     const store = useStore();
     const { webData, calendarData, weddingData } = storeToRefs(store);
     const route = useRoute()
+    const isOpen = ref(false)
+    const dialogRef = ref(null)
+    const isOpenContact = ref(false)
 
-    // console.log(route.params.name)
+
+    const closeModal = () => {
+      isOpen.value = false;
+    }
+
+    const openMapOption = () => {
+      // selectedCompany.value = company;
+      isOpen.value = true;
+    }
+
+    const closeModalContact = () => {
+      isOpenContact.value = false;
+    }
+
+    const openContactOption = () => {
+      // selectedCompany.value = company;
+      isOpenContact.value = true;
+    }
 
 
     onMounted(async() => {
@@ -307,6 +478,23 @@ export default {
       await store.getWeddingData(route.params.name);
     })
 
+    // Convert API date data once webData is loaded
+    // Convert to full eg: Ahad, 1 Disember 2024
+    const fullDate = computed(() => {
+      if (webData.value.date) {
+        return convertDateToMalay(webData.value.date);
+      }
+      return '';
+    });
+
+    // Convert API date data to hijri date once webData is loaded
+    // Convert to hijri date eg: 28 Jamadilawal 1446
+    const hijriDate = computed(()=> {
+      if (webData.value.date) {
+        return convertToHijri(webData.value.date);
+      }
+      return '';
+    })
 
     const formatDateTime = (date, time, timeZone) => {
 
@@ -316,6 +504,19 @@ export default {
       return dateTime.toISOString().replace(/-|:|\.\d\d\d/g, "");
     };
 
+
+
+     const gotoMap = computed(() => {
+      if /* if we're on iOS, open in Apple Maps */
+        ((navigator.platform.indexOf("iPhone") != -1) || 
+        (navigator.platform.indexOf("iPad") != -1) || 
+        (navigator.platform.indexOf("iPod") != -1))
+        // window.open(`comgooglemaps://?center=${weddingData.value.coordinate}&zoom=14`)
+        window.open(`maps://maps.google.com/maps?daddr=${weddingData.value.coordinate}&amp;ll=`);
+    else /* else use Google */
+        window.open(`https://maps.google.com/maps?daddr=${weddingData.value.coordinate}&amp;ll=`);
+    })
+
     const addToGoogleCalendar = () => {
       const start = formatDateTime(calendarData.value.startDate, calendarData.value.startTime, calendarData.value.timeZone);
       const end = formatDateTime(calendarData.value.endDate, calendarData.value.endTime, calendarData.value.timeZone);
@@ -323,16 +524,52 @@ export default {
       const description = encodeURIComponent('');
       const location = encodeURIComponent(calendarData.value.location);
       const timeZone = encodeURIComponent(calendarData.value.timeZone);
-      console.log("Date:", timeZone)
+      // console.log("Date:", timeZone)
 
       const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${description}&location=${location}&ctz=${timeZone}`;
       window.open(googleCalendarUrl, '_blank');
     };
+
+    const addBookmark = () => {
+      const url = window.location.href;
+      const title = document.title;
+
+      // Detecting if the browser supports the bookmarking feature
+      if (window.sidebar && window.sidebar.addPanel) {
+        // Firefox <= 22
+        window.sidebar.addPanel(title, url, "");
+      } else if (window.external && window.external.AddFavorite) {
+        // IE and older versions of Edge
+        window.external.AddFavorite(url, title);
+      } else if (window.opera && window.print) {
+        // Opera before version 15
+        nextTick(() => {
+          alert('Press Ctrl+D to bookmark this page.');
+        });
+      } else {
+        // All other browsers
+        nextTick(() => {
+          alert('Press Ctrl+D (Cmd+D for Mac) to bookmark this page.');
+        });
+      }
+    }
+
     return {
         addToGoogleCalendar,
         webData,
         calendarData,
         weddingData,
+        hijriDate,
+        fullDate,
+        gotoMap,
+        openMapOption,
+        closeModal,
+        dialogRef,
+        isOpenContact,
+        closeModalContact,
+        isOpen,
+        openContactOption,
+        addBookmark
     }
     }
 }
