@@ -5,7 +5,9 @@ export const useStore = defineStore('store', {
   state: () => ({
     webData: [],
     calendarData: [],
-    weddingData: []
+    weddingData: [],
+    rsvpData: [],
+    configData:[]
   }),
   actions: {
     async getWebData(name) {
@@ -35,5 +37,23 @@ export const useStore = defineStore('store', {
         console.error(error)
       }
     },
+    async getRSVPData(name) {
+      try {
+        const tab = 'rsvp'
+        const response = await getData(tab)
+        this.rsvpData = response.filter((item)=> item.name === name)[0]
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async getConfigData(name) {
+      try {
+        const tab = 'web_config'
+        const response = await getData(tab)
+        this.configData = response.filter((item)=> item.web_path === name)[0]
+      } catch (error) {
+        console.error(error)
+      }
+    }
   }
 })

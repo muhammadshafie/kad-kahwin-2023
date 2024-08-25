@@ -13,10 +13,11 @@
         <div class="mb-8">
           <div
             class="h-[95vh] bg text-dark cursor-pointer block rounded-lg bg-gray-100 flex justify-center items-center flex-col text-center p-4 transform transition-all duration-300 scale-100 hover:scale-[.98]"
-            style="
-              background-image: url('https://shafieramli.com/kad-kahwin/images/background/bg-mint-green-1.jpg');
-              background-position: center;
-              background-size: cover;
+            :style="{
+              backgroundImage: configData.bg_url ? `url(https://shafieramli.com/kad-kahwin/images/background/${configData.bg_url}.jpg)`: '',
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+            }
             "
           >
             <h4 class="font-bold">WALIMATUL URUS</h4>
@@ -28,7 +29,6 @@
             <div class="pb-3">
               <h3 class="text-xl italic">{{fullDate}}</h3>
               <h3 class="py-1 italic">{{ hijriDate}}</h3>
-
             </div>
           </div>
         </div>
@@ -36,11 +36,17 @@
         <!-- ============ Walimatul Urus Section ============ -->
         <div class="mb-8">
           <div
-            class="cursor-pointer block rounded-lg bg-[#c9e4da] flex justify-center px-5 py-24 transform transition-all duration-300 scale-100 hover:scale-[.98]"
+            class="cursor-pointer block rounded-lg flex justify-center px-5 py-24 transform transition-all duration-300 scale-100 hover:scale-[.98]"
+            :style="{
+              background: `${secondaryColor}`
+            }"
           >
             <div class="absolute top-0 -mt-3">
               <div
-                class="rounded-full bg-[#348784] align-center text-white text-xs py-1 px-2 leading-none"
+                :style="{
+                  background: `${primaryColor}`
+                }"
+                class="rounded-full align-center text-white text-xs py-1 px-2 leading-none"
               >
                 <span class="text-center">Undangan</span>
               </div>
@@ -83,94 +89,94 @@
   
         <!-- ============ Detail Section ============ -->
         <div class="mb-8">
-          <div
-            class="cursor-pointer block rounded-lg bg-[#c9e4da] flex justify-center px-5 py-24 transform transition-all duration-300 scale-100 hover:scale-[.98]"
+          <div 
+          :style="{
+            background: `${secondaryColor}`
+          }"
+            class="cursor-pointer block rounded-lg flex justify-center p-5 transform transition-all duration-300 scale-100 hover:scale-[.98]"
           >
             <div class="absolute top-0 -mt-3">
-              <div
-                class="rounded-full bg-[#348784] align-center text-white text-xs py-1 px-2 leading-none"
+              <div 
+              :style="{
+                background: `${primaryColor}`
+              }"
+                class="rounded-full align-center text-white text-xs py-1 px-2 leading-none"
               >
                 <span class="text-center">Lokasi, Tarik, Masa</span>
               </div>
             </div>
             <div class="text-black text-center">
-              <p>Tempat</p>
-              <p>{{weddingData.location}}</p>
-              <p>Tarikh</p>
-              <p>{{fullDate}}</p>
-              <p>Masa</p>
-              <p>{{weddingData.startTime}} - {{weddingData.endTime}}</p>
+              <div class="mb-3">
+                <h3 class="text-black uppercase text-2xl font-bold leading-tight py-2">Tempat</h3>
+                <h4 class="text-black text-lg">{{weddingData.location}}</h4>
+              </div>
+              <div class="mb-3">
+                <h3 class="text-black uppercase text-2xl font-bold leading-tight py-2">Tarikh</h3>
+                <h4 class="text-black text-lg">{{fullDate}}</h4>
+              </div>
+              <div class="mb-3">
+                <h3 class="text-black uppercase text-2xl font-bold leading-tight py-2">Masa</h3>
+                <h4 class="text-black text-lg">{{weddingData.startTime}} - {{weddingData.endTime}}</h4>
+              </div>
             </div>
           </div>
         </div>
   
         <!-- ============ Countdown Section ============ -->
         <div class="mb-8">
-          <div
-            class="cursor-pointer block rounded-lg bg-[#c9e4da] flex justify-center p-5 transform transition-all duration-300 scale-100 hover:scale-[.98]"
+          <div 
+          :style="{
+            background: `${secondaryColor}`
+          }"
+            class="cursor-pointer block rounded-lg flex justify-center p-5 transform transition-all duration-300 scale-100 hover:scale-[.98]"
           >
             <div class="absolute top-0 -mt-3">
               <div
-                class="rounded-full bg-[#348784] align-center text-white text-xs py-1 px-2 leading-none"
+                
+                :style="{
+                  background: `${primaryColor}`
+                }"
+                class="rounded-full align-center text-white text-xs py-1 px-2 leading-none"
               >
                 <span class="text-center">Pengiraan Detik Majlis Perkahwinan</span>
               </div>
             </div>
-            <Countdown deadline="2024-12-01 00:00:00" mainColor="#000" secondFlipColor="#000" countdownSize="3rem" labelSize="1.5rem" :flipAnimation="false" :labels="{days: 'Hari',hours: 'Jam',minutes: 'Minit',seconds: 'Saat'}"/>
+             <Countdown :deadline="countdownDate" mainColor="#000" secondFlipColor="#000" countdownSize="3rem" labelSize="1.5rem" :flipAnimation="false" :labels="{days: 'Hari',hours: 'Jam',minutes: 'Minit',seconds: 'Saat'}"/>
           </div>
         </div>
   
         <!-- ============ Aturcara Section ============ -->
         <div class="mb-8">
-          <div
-            class="cursor-pointer block rounded-lg bg-[#c9e4da] flex justify-center p-5 transform transition-all duration-300 scale-100 hover:scale-[.98]"
+          <div 
+          :style="{
+            background: `${secondaryColor}`
+          }"
+            class="cursor-pointer block rounded-lg flex justify-center p-5 transform transition-all duration-300 scale-100 hover:scale-[.98]"
           >
             <div class="absolute top-0 -mt-3">
               <div
-                class="rounded-full bg-[#348784] align-center text-white text-xs py-1 px-2 leading-none"
+                
+                :style="{
+                  background: `${primaryColor}`
+                }"
+                class="rounded-full align-center text-white text-xs py-1 px-2 leading-none"
               >
                 <span class="text-center">Aturcara Majlis</span>
               </div>
             </div>
             <div class="text-black">
-                <!-- <p>11:00 AM	MAJLIS BERMULA</p>
-                <p>12:30 PM	KETIBAAN PENGANTIN</p>
-                <p>5:00 PM	MAJLIS BERAKHIR</p> -->
-                <!-- Vertical Timeline #1 -->
                 <div class="">
-                    <!-- Item #1 -->
-                    <div class="relative pl-8 sm:pl-32 py-2 group">
-                        <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-[#348784] sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-[#348784] after:border-4 after:box-content after:border-[#348784] after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
-                            <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">11:00 am</time>
-                            <div class="text-md font-bold text-slate-900 translate-y-1">MAJLIS BERMULA</div>
-                        </div>
-                    </div>
-  
-                    <!-- Item #2 -->
-                    <div class="relative pl-8 sm:pl-32 py-2 group">
-                        <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-[#348784] sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-[#348784] after:border-4 after:box-content after:border-[#348784] after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
-                            <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">12:00 pm</time>
-                            <div class="text-md font-bold text-slate-900 translate-y-1">KETIBAAN PENGANTIN</div>
-                        </div>
-                    </div>
-  
-                    <!-- Item #3 -->
-                    <div class="relative pl-8 sm:pl-32 py-2 group">
-                        <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-[#348784] sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-[#348784] after:border-4 after:box-content after:border-[#348784] after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
-                            <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">03:00 pm</time>
-                            <div class="text-md font-bold text-slate-900 translate-y-1">MAJLIS BERAKHIR</div>
-                        </div>
-                    </div>
-  
-                    <!-- Item #4 -->
-                    <div class="relative pl-8 sm:pl-32 py-2 group">
-                        <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-[#348784] sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-[#348784] after:border-4 after:box-content after:border-[#348784] after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
-                            <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">05:00 pm</time>
-                            <div class="text-md font-bold text-slate-900 translate-y-1">MAJLIS BERAKHIR</div>
+                    <div v-for="(item, index) in tentatives" :key="index" class="relative pl-8 sm:pl-32 py-2 group">
+                        <div 
+                        :class="
+                          `before:bg-[${primaryColor}] after:bg-[${primaryColor}] after:border-[${primaryColor}]`
+                        "
+                        class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:border-4 after:box-content  after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
+                            <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">{{tentativeTime(item.time)}}</time>
+                            <div class="text-md font-bold text-slate-900 translate-y-1">{{item.title}}</div>
                         </div>
                     </div>
                   </div>
-                <!-- End: Vertical Timeline #1 -->
             </div>
           </div>
         </div>
@@ -180,7 +186,9 @@
         <div
           class="sticky bottom-2 p-5 px-6 m-2 flex items-center justify-between backdrop-blur-sm bg-white/20 shadow-3xl text-gray-400 rounded-2xl cursor-pointer"
         >
-          <div @click="openMapOption"  class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-[#c9e4da]">
+          <div @click="openMapOption" 
+          :class="`text-[${primaryColor}] hover:text-[${secondaryColor}]`"
+          class="flex flex-col items-center transition ease-in duration-200 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#fff"
@@ -202,7 +210,9 @@
               />
             </svg>
           </div>
-          <div @click="addToGoogleCalendar" class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-[#c9e4da]">
+          <div @click="addToGoogleCalendar" 
+            :class="`text-[${primaryColor}] hover:text-[${secondaryColor}]`"
+            class="flex flex-col items-center transition ease-in duration-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#fff"
@@ -219,46 +229,23 @@
               />
             </svg>
           </div>
-          <div class="flex flex-col items-center text-[#348784] hover:text-[#c9e4da]">
-            <div
-              class="absolute bottom-5 shadow-2xl text-center flex items-center justify-center rounded-full border-4 text-3xl border-gray-50 hover:border-[#348784] hover:bg-[#c9e4da] bg-[#348784] w-20 h-20 p-2 text-white transition ease-in duration-200"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                data-slot="icon"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z"
-                />
-              </svg>
-              <!-- <span>RSVP</span> -->
-            </div>
-          </div>
-          <div @click="addBookmark" class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-[#c9e4da]">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="#fff"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              data-slot="icon"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-              ></path>
+          <div @click="openRsvpDialog" 
+            :class="`text-[${primaryColor}] hover:text-[${secondaryColor}]`"
+            class="flex flex-col items-center transition ease-in duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 -960 960 960" 
+            fill="#fff" 
+            stroke-width="34"
+            stroke="currentColor"
+            data-slot="icon"
+            class="w-12 h-12">
+              <path stroke-linecap="round"
+              stroke-linejoin="round" d="M40-360v-240h140q25 0 42.5 17.5T240-540v40q0 18-10.5 33T204-444l36 84h-60l-34-80h-46v80H40Zm240 0v-60h120v-30h-80q-17 0-28.5-11.5T280-490v-70q0-17 11.5-28.5T320-600h140v60H340v30h80q17 0 28.5 11.5T460-470v70q0 17-11.5 28.5T420-360H280Zm290 0-70-240h60l40 137 40-137h60l-70 240h-60Zm150 0v-240h140q25 0 42.5 17.5T920-540v40q0 25-17.5 42.5T860-440h-80v80h-60ZM100-500h80v-40h-80v40Zm680 0h80v-40h-80v40Z"/>
             </svg>
           </div>
-          <div @click="openContactOption" class="flex flex-col items-center transition ease-in duration-200 text-[#348784] hover:text-[#c9e4da]">
+          <div @click="openContactOption"
+          :class="`text-[${primaryColor}] hover:text-[${secondaryColor}]`"
+          class="flex flex-col items-center transition ease-in duration-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#fff"
@@ -342,9 +329,181 @@
           </div>
         </Dialog>
       </TransitionRoot>
+
+      <!-- ======================== Dialog RSVP ======================== -->
+      <TransitionRoot appear :show="isOpenRsvpDialog" as="template">
+        <Dialog :initialFocus="dialogRef" as="div" @close="closeModalRsvp" class="relative z-10 ">
+          <TransitionChild
+            as="template"
+            enter="duration-300 ease-out"
+            enter-from="opacity-0"
+            enter-to="opacity-100"
+            leave="duration-200 ease-in"
+            leave-from="opacity-100"
+            leave-to="opacity-0"
+          >
+            <div class="fixed inset-0 bg-black/25" />
+          </TransitionChild>
+    
+          <div class="fixed inset-0 overflow-y-auto">
+            <div
+              class="flex min-h-full items-center justify-center p-4 text-center"
+            >
+              <TransitionChild
+                as="template"
+                enter="duration-300 ease-out"
+                enter-from="opacity-0 scale-95"
+                enter-to="opacity-100 scale-100"
+                leave="duration-200 ease-in"
+                leave-from="opacity-100 scale-100"
+                leave-to="opacity-0 scale-95"
+              >
+                <DialogPanel
+                  class="w-full max-w-2xl transform overflow-hidden rounded-2xl p-6 text-left align-middle shadow-xl transition-all backdrop-blur-lg bg-white/20"
+                >
+                    <div class="flex items-start justify-between">
+                      <DialogTitle
+                        as="h3"
+                        class="text-lg font-medium bold leading-6 text-gray-900 flex"
+                      >RSVP
+                      <PencilSquareIcon class="h-6 w-6 ml-1 text-gray-900" />
+                      </DialogTitle>
+                      <XMarkIcon 
+                        @click="closeModalRsvp"
+                        class="cursor-pointer h-8 w-8 p-1.5 ml-auto text-gray-500 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                      />
+                      <button ref="dialogRef"  /> 
+                    </div>
+                    <div class="mt-2 gap-4">
+                      <form id="rsvpForm" @submit="handleSubmit" method="POST" :action="`https://docs.google.com/forms/u/0/d/e/${rsvpData.post}/formResponse`">
+                        <label class="block mb-6">
+                          <span class="text-gray-700">Nama</span>
+                          <input
+                            :name="rsvpData.invited_name"
+                            type="text"
+                            class="
+                              block
+                              w-full
+                              mt-1
+                              p-2
+                              text-gray-700
+                              border-gray-300
+                              rounded-md
+                              shadow-sm
+                              focus:border-indigo-300
+                              focus:ring
+                              focus:ring-indigo-200
+                              focus:ring-opacity-50
+                            "
+                            placeholder="Nama"
+                          />
+                        </label>
+                        <label class="block mb-6">
+                          <span for="people" class="text-gray-700">Bilangan orang yang dibawa bersama</span>
+                          <input
+                            :name="rsvpData.no_of_people"
+                            type="number"
+                            class="
+                              block
+                              w-full
+                              mt-1
+                              p-2
+                              text-gray-700
+                              border-gray-300
+                              rounded-md
+                              shadow-sm
+                              focus:border-indigo-300
+                              focus:ring
+                              focus:ring-indigo-200
+                              focus:ring-opacity-50
+                            "
+                            placeholder="1"
+                          />
+                        </label>
+                        <label class="block mb-6">
+                          <span class="text-gray-700">Ucapan</span>
+                          <textarea
+                            :name="rsvpData.wishes"
+                            class="
+                              block
+                              w-full
+                              mt-1
+                              p-2
+                              text-gray-700
+                              border-gray-300
+                              rounded-md
+                              shadow-sm
+                              focus:border-indigo-300
+                              focus:ring
+                              focus:ring-indigo-200
+                              focus:ring-opacity-50
+                            "
+                            rows="3"
+                            placeholder="Apa-apa ucapan buat pengantin ?"
+                          ></textarea>
+                        </label>
+                        <div class="flex items-center space-x-6 mb-6">
+                          <div class="flex items-center">
+                            <input
+                              type="radio"
+                              :name="rsvpData.attendance"
+                              value="Hadir"
+                              id="radioButton1"
+                              class="h-5 w-5"
+                            />
+                            <label
+                              for="radioButton1"
+                              class="pl-3 text-gray-700"
+                            >
+                              Hadir
+                            </label>
+                          </div>
+                          <div class="flex justify-center content-center items-center">
+                            <input
+                              type="radio"
+                              :name="rsvpData.attendance"
+                              value="Tidak Hadir"
+                              id="radioButton2"
+                              class="h-5 w-5 checked:before:content-['✔'] checked:before:text-[24px] "
+                            />
+                            <label
+                              for="radioButton2"
+                              class="pl-3 text-gray-700"
+                            >
+                              Tidak Hadir
+                            </label>
+                          </div>
+                        </div>
+                        <div class="">
+                          <button
+                            type="submit"
+                            class="
+                              h-10
+                              px-5
+                              text-indigo-100
+                              bg-indigo-700
+                              rounded-lg
+                              transition-colors
+                              duration-150
+                              focus:shadow-outline
+                              hover:bg-indigo-800
+                            "
+                          >
+                            Submit RSVP
+                          </button>
+                          <p id="submitRespond" class="text-gray-700 hidden">Thank You for Your RSVP Registration</p>
+                        </div>
+                      </form>
+                    </div>
+                </DialogPanel>
+              </TransitionChild>
+            </div>
+          </div>
+        </Dialog>
+      </TransitionRoot>
       
 
-      <!-- ======================== Dialog Map ======================== -->
+      <!-- ======================== Dialog Contact ======================== -->
       <TransitionRoot appear :show="isOpenContact" as="template">
         <Dialog :initialFocus="dialogRef" as="div" @close="closeModalContact" class="relative z-10 ">
           <TransitionChild
@@ -379,15 +538,15 @@
                       <DialogTitle
                         as="h3"
                         class="text-lg font-medium bold leading-6 text-gray-900 flex"
-                      >Navigation App 
-                      <MapPinIcon class="h-6 w-6 ml-1 text-gray-900" />
+                      >Contact 
+                      <DevicePhoneMobileIcon class="h-6 w-6 ml-1 text-gray-900" />
 
                       </DialogTitle>
                       <XMarkIcon 
                         @click="closeModalContact"
                         class="cursor-pointer h-8 w-8 p-1.5 ml-auto text-gray-500 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm items-center dark:hover:bg-gray-600 dark:hover:text-white"
                       />
-                      <button ref="dialogRef"  /> 
+                      <button ref="dialogRef" ></button>
                     </div>
                     <div class="mt-2 flex row gap-4">
                       <a class="col" :href="`tel:${webData.contact_1}`" target="_blank">
@@ -417,7 +576,7 @@
 import { Countdown } from 'vue3-flip-countdown'
 import { useStore } from '@/stores/store';
 import { storeToRefs } from 'pinia';
-import { onMounted, computed, ref, nextTick } from 'vue';
+import { onMounted, computed, ref  } from 'vue';
 import { useRoute } from 'vue-router';
 import { convertToHijri } from "@/utils/convertToHijri"
 import { convertDateToMalay } from "@/utils/convertDateToMalay"
@@ -428,7 +587,7 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue';
-import { XMarkIcon,ArrowRightCircleIcon,MapPinIcon,PhoneIcon } from '@heroicons/vue/24/outline';
+import { XMarkIcon,MapPinIcon,PhoneIcon,DevicePhoneMobileIcon, PencilSquareIcon } from '@heroicons/vue/24/outline';
 
 export default {
     name: "WeddingPage",
@@ -436,22 +595,24 @@ export default {
         Countdown,
         TransitionRoot,
         TransitionChild,
+        // eslint-disable-next-line vue/no-reserved-component-names
         Dialog,
         DialogPanel,
         DialogTitle,
         XMarkIcon,
-        ArrowRightCircleIcon,
         MapPinIcon,
-        PhoneIcon
+        PhoneIcon,
+        DevicePhoneMobileIcon,
+        PencilSquareIcon,
     },
     setup() {
     const store = useStore();
-    const { webData, calendarData, weddingData } = storeToRefs(store);
+    const { webData, calendarData, weddingData, rsvpData, configData } = storeToRefs(store);
     const route = useRoute()
     const isOpen = ref(false)
     const dialogRef = ref(null)
     const isOpenContact = ref(false)
-
+    const isOpenRsvpDialog = ref(false)
 
     const closeModal = () => {
       isOpen.value = false;
@@ -471,12 +632,69 @@ export default {
       isOpenContact.value = true;
     }
 
+    const openRsvpDialog = () => {
+      isOpenRsvpDialog.value = true;
+    }
+
+    const closeModalRsvp = () => {
+      isOpenRsvpDialog.value = false;
+    }
 
     onMounted(async() => {
       await store.getWebData(route.params.name);
       await store.getCalendarData(route.params.name);
       await store.getWeddingData(route.params.name);
+      await store.getRSVPData(route.params.name);
+      await store.getConfigData(route.params.name);
     })
+
+    const primaryColor = computed(() => {
+      return configData.value ? `#${configData.value.theme}` : ''
+    })
+
+    const secondaryColor = computed(() => {
+      return configData.value ? `#${configData.value.secondary_theme}` : ''
+    })
+
+    const handleSubmit = (event) => {
+      event.preventDefault(); // Prevent the default form submission
+
+      const form = event.target;
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors',
+      })
+        .then(() => {
+          // Hide the form and display the success message
+          document.querySelector('#rsvpForm button').style.display = 'none';
+          document.querySelector('#rsvpForm #submitRespond').style.display = 'block';
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    };
+
+    
+    const tentatives = computed(() => {
+      const data = weddingData.value;
+      const result = [];
+
+      // Loop through the keys in the object
+      for (let i = 1; i <= 4; i++) {
+        const title = data[`tentative_${i}`];
+        const time = data[`tentative_${i}_time`];
+
+          result.push({
+            title: title,
+            time: time,
+          });
+      }
+
+      return result;
+    });
 
     // Convert API date data once webData is loaded
     // Convert to full eg: Ahad, 1 Disember 2024
@@ -496,26 +714,53 @@ export default {
       return '';
     })
 
-    const formatDateTime = (date, time, timeZone) => {
+    const countdownDate = computed(() => {
+      if(weddingData.value.date) {
+        const dateParts = weddingData.value.date.match(/\d+/g); 
+  
+        if (dateParts && dateParts.length === 3) {
+          // Parse year, month (adjusted for 0-indexing), and day
+          const year = parseInt(dateParts[0], 10);
+          const month = parseInt(dateParts[1], 10); // Months are 0-based
+          const day = parseInt(dateParts[2], 10);
 
+          // Create a new Date object
+          const dateObject = new Date(year, month, day);
+
+          // Format the date as 'YYYY-MM-DD 00:00:00'
+          return `${dateObject.getFullYear()}-${String(dateObject.getMonth() + 1).padStart(2, '0')}-${String(dateObject.getDate()).padStart(2, '0')} 00:00:00`;
+        }
+      }
+      return '1970-01-01 00:00:00'
+    })
+
+    const tentativeTime = (time) => {
+      // Extract time components from the string
+      if(time) {
+        const timeString = time.match(/\d+/g);
+        
+        if (!timeString || timeString.length < 4) {
+          return 'Invalid Time';
+        }
+  
+        const hours24 = parseInt(timeString[3], 10); // 24-hour format
+        const minutes = parseInt(timeString[4], 10);
+  
+        // Convert to 12-hour format
+        const period = hours24 >= 12 ? 'PM' : 'AM';
+        const hours12 = (hours24 % 12 || 12).toString().padStart(2, '0'); // Convert to 12-hour format
+        const formattedMinutes = minutes.toString().padStart(2, '0');
+  
+        return `${hours12}:${formattedMinutes} ${period}`;
+      }
+    }
+
+    const formatDateTime = (date, time) => {
       // Create a Date object and convert to ISO 8601 format
       const dateTime = new Date(`${date}T${time}`);
       // Format as `yyyyMMddTHHmmssZ` (UTC timezone)
       return dateTime.toISOString().replace(/-|:|\.\d\d\d/g, "");
     };
-
-
-
-     const gotoMap = computed(() => {
-      if /* if we're on iOS, open in Apple Maps */
-        ((navigator.platform.indexOf("iPhone") != -1) || 
-        (navigator.platform.indexOf("iPad") != -1) || 
-        (navigator.platform.indexOf("iPod") != -1))
-        // window.open(`comgooglemaps://?center=${weddingData.value.coordinate}&zoom=14`)
-        window.open(`maps://maps.google.com/maps?daddr=${weddingData.value.coordinate}&amp;ll=`);
-    else /* else use Google */
-        window.open(`https://maps.google.com/maps?daddr=${weddingData.value.coordinate}&amp;ll=`);
-    })
 
     const addToGoogleCalendar = () => {
       const start = formatDateTime(calendarData.value.startDate, calendarData.value.startTime, calendarData.value.timeZone);
@@ -530,38 +775,15 @@ export default {
       window.open(googleCalendarUrl, '_blank');
     };
 
-    const addBookmark = () => {
-      const url = window.location.href;
-      const title = document.title;
-
-      // Detecting if the browser supports the bookmarking feature
-      if (window.sidebar && window.sidebar.addPanel) {
-        // Firefox <= 22
-        window.sidebar.addPanel(title, url, "");
-      } else if (window.external && window.external.AddFavorite) {
-        // IE and older versions of Edge
-        window.external.AddFavorite(url, title);
-      } else if (window.opera && window.print) {
-        // Opera before version 15
-        nextTick(() => {
-          alert('Press Ctrl+D to bookmark this page.');
-        });
-      } else {
-        // All other browsers
-        nextTick(() => {
-          alert('Press Ctrl+D (Cmd+D for Mac) to bookmark this page.');
-        });
-      }
-    }
-
+   
     return {
         addToGoogleCalendar,
         webData,
         calendarData,
         weddingData,
+        rsvpData,
         hijriDate,
         fullDate,
-        gotoMap,
         openMapOption,
         closeModal,
         dialogRef,
@@ -569,7 +791,16 @@ export default {
         closeModalContact,
         isOpen,
         openContactOption,
-        addBookmark
+        isOpenRsvpDialog,
+        openRsvpDialog,
+        closeModalRsvp,
+        handleSubmit,
+        countdownDate,
+        tentativeTime,
+        tentatives,
+        configData,
+        primaryColor,
+        secondaryColor
     }
     }
 }
