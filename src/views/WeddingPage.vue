@@ -3,11 +3,6 @@
       style="max-width: 428px"
       class="min-w-screen min-h-screen flex items-center justify-center bg-white text-gray-800 shadow-xl h-full"
     >
-      <!-- <div
-        class="bg-white text-gray-800 rounded-xl shadow-lg overflow-hidden relative flex"
-        style="width: 428px; height: 100vh"
-      > -->
-  
       <!-- ============ First Section ============ -->
       <div class="bg-white h-full w-full px-5 pt-5">
         <div class="mb-8">
@@ -22,9 +17,9 @@
           >
             <h4 class="font-bold">WALIMATUL URUS</h4>
             <div class="py-5">
-              <h1 class="text-5xl font-bold capitalize">{{webData.first_name}}</h1>
-              <h1 class="text-3xl font-bold">&</h1>
-              <h1 class="text-5xl font-bold capitalize">{{webData.second_name}}</h1>
+              <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.first_name}}</h1>
+              <h1 class="great-vibes-regular text-3xl font-bold">&</h1>
+              <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.second_name}}</h1>
             </div>
             <div class="pb-3">
               <h3 class="text-xl italic">{{fullDate}}</h3>
@@ -149,7 +144,7 @@
         <div class="mb-8">
           <div 
           :style="{
-            background: `${secondaryColor}`
+            background: secondaryColor
           }"
             class="cursor-pointer block rounded-lg flex justify-center p-5 transform transition-all duration-300 scale-100 hover:scale-[.98]"
           >
@@ -157,7 +152,7 @@
               <div
                 
                 :style="{
-                  background: `${primaryColor}`
+                  background: primaryColor
                 }"
                 class="rounded-full align-center text-white text-xs py-1 px-2 leading-none"
               >
@@ -166,16 +161,25 @@
             </div>
             <div class="text-black">
                 <div class="">
-                    <div v-for="(item, index) in tentatives" :key="index" class="relative pl-8 sm:pl-32 py-2 group">
-                        <div 
-                        :class="
-                          `before:bg-[${primaryColor}] after:bg-[${primaryColor}] after:border-[${primaryColor}]`
-                        "
-                        class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:border-4 after:box-content  after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
-                            <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">{{tentativeTime(item.time)}}</time>
-                            <div class="text-md font-bold text-slate-900 translate-y-1">{{item.title}}</div>
+                    <template v-for="(item, index) in tentatives" :key="index" >
+                      <div v-if="item.time !== null & item.title !== null" class="relative pl-8 sm:pl-32 py-2 group">
+                        <div class="tentative flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:border-4 after:box-content  after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5"
+                        :style="{
+                          '--before-bg': themeColor,
+                          '--after-bg': themeColor,
+                          '--after-border': themeColor
+                        }">
+                          <time 
+                            :style="{
+                              '--tentative-text-color': tentativeTimeColor,
+                              '--tentative-bg-color': tentativeTimeBg,
+                            }"
+                            class="tentative-time sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 rounded-full">{{tentativeTime(item.time)}}
+                          </time>
+                          <div class="text-md font-bold text-slate-900 translate-y-1">{{item.title}}</div>
                         </div>
-                    </div>
+                      </div>
+                    </template>
                   </div>
             </div>
           </div>
@@ -187,8 +191,11 @@
           class="sticky bottom-2 p-5 px-6 m-2 flex items-center justify-between backdrop-blur-sm bg-white/20 shadow-3xl text-gray-400 rounded-2xl cursor-pointer"
         >
           <div @click="openMapOption" 
-          :class="`text-[${primaryColor}] hover:text-[${secondaryColor}]`"
-          class="flex flex-col items-center transition ease-in duration-200 ">
+          :style="{
+            '--icon-color': primaryColor,
+            '--icon-hover-color': secondaryColor
+          }"
+          class="icon flex flex-col items-center transition ease-in duration-200 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#fff"
@@ -211,8 +218,11 @@
             </svg>
           </div>
           <div @click="addToGoogleCalendar" 
-            :class="`text-[${primaryColor}] hover:text-[${secondaryColor}]`"
-            class="flex flex-col items-center transition ease-in duration-200">
+            :style="{
+              '--icon-color': primaryColor,
+              '--hover-color': secondaryColor
+            }"
+            class="icon flex flex-col items-center transition ease-in duration-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#fff"
@@ -230,8 +240,11 @@
             </svg>
           </div>
           <div @click="openRsvpDialog" 
-            :class="`text-[${primaryColor}] hover:text-[${secondaryColor}]`"
-            class="flex flex-col items-center transition ease-in duration-200">
+            :style="{
+              '--icon-color': primaryColor,
+              '--hover-color': secondaryColor
+            }"
+            class="icon flex flex-col items-center transition ease-in duration-200">
             <svg xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 -960 960 960" 
             fill="#fff" 
@@ -244,8 +257,11 @@
             </svg>
           </div>
           <div @click="openContactOption"
-          :class="`text-[${primaryColor}] hover:text-[${secondaryColor}]`"
-          class="flex flex-col items-center transition ease-in duration-200">
+          :style="{
+            '--icon-color': primaryColor,
+            '--hover-color': secondaryColor
+          }"
+          class="icon flex flex-col items-center transition ease-in duration-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#fff"
@@ -264,7 +280,6 @@
           </div>
         </div>
       </div>
-      <!-- </div> -->
 
       <!-- ======================== Dialog Map ======================== -->
       <TransitionRoot appear :show="isOpen" as="template">
@@ -648,13 +663,11 @@ export default {
       await store.getConfigData(route.params.name);
     })
 
-    const primaryColor = computed(() => {
-      return configData.value ? `#${configData.value.theme}` : ''
-    })
-
-    const secondaryColor = computed(() => {
-      return configData.value ? `#${configData.value.secondary_theme}` : ''
-    })
+    const themeColor = computed(() => configData.value.theme || '#348784');
+    const tentativeTimeColor = computed(() => configData.value.tentative_time_text || '#059669');
+    const tentativeTimeBg = computed(() => configData.value.tentative_time_bg || '#d1fae5');
+    const primaryColor = computed(() =>  configData.value ? configData.value.theme : '')
+    const secondaryColor = computed(() =>  configData.value ? configData.value.secondary_theme : '')
 
     const handleSubmit = (event) => {
       event.preventDefault(); // Prevent the default form submission
@@ -800,11 +813,35 @@ export default {
         tentatives,
         configData,
         primaryColor,
-        secondaryColor
+        secondaryColor,
+        themeColor,
+        tentativeTimeColor,
+        tentativeTimeBg
     }
     }
 }
 </script>
-<style lang="">
-    
+<style>
+/* Tailwind custom properties to handle the dynamic colors */
+.tentative::before {
+  background-color: var(--before-bg);
+}
+
+.tentative::after {
+  background-color: var(--after-bg);
+  border-color: var(--after-border);
+}
+
+.tentative-time {
+  color: var(--tentative-text-color);
+  background-color: var(--tentative-bg-color);
+}
+
+.icon {
+  color: var(--icon-color);
+}
+
+.icon:hover {
+  color: var(--icon-hover-color);
+}
 </style>
