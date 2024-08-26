@@ -176,7 +176,7 @@
                             }"
                             class="tentative-time sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 rounded-full">{{tentativeTime(item.time)}}
                           </time>
-                          <div class="text-md font-bold text-slate-900 translate-y-1">{{item.title}}</div>
+                          <div class="text-md font-bold text-slate-900 translate-y-1 uppercase">{{item.title}}</div>
                         </div>
                       </div>
                     </template>
@@ -843,5 +843,9 @@ export default {
 
 .icon:hover {
   color: var(--icon-hover-color);
+}
+
+.flip-clock__piece {
+  margin: 0 10px !important;
 }
 </style>
