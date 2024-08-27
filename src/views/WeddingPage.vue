@@ -17,9 +17,9 @@
           >
             <h4 class="font-bold">WALIMATUL URUS</h4>
             <div class="py-5">
-              <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.first_name}}</h1>
+              <h1 class="great-vibes-regular text-7xl font-bold capitalize">{{webData.first_name}}</h1>
               <h1 class="great-vibes-regular text-3xl font-bold">&</h1>
-              <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.second_name}}</h1>
+              <h1 class="great-vibes-regular text-7xl font-bold capitalize">{{webData.second_name}}</h1>
             </div>
             <div class="pb-3">
               <h3 class="text-xl italic">{{fullDate}}</h3>
