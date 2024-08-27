@@ -593,6 +593,7 @@ import { useStore } from '@/stores/store';
 import { storeToRefs } from 'pinia';
 import { onMounted, computed, ref  } from 'vue';
 import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { convertToHijri } from "@/utils/convertToHijri"
 import { convertDateToMalay } from "@/utils/convertDateToMalay"
 import {
@@ -624,10 +625,12 @@ export default {
     const store = useStore();
     const { webData, calendarData, weddingData, rsvpData, configData } = storeToRefs(store);
     const route = useRoute()
+    const router = useRouter()
     const isOpen = ref(false)
     const dialogRef = ref(null)
     const isOpenContact = ref(false)
     const isOpenRsvpDialog = ref(false)
+    
 
     const closeModal = () => {
       isOpen.value = false;
@@ -656,11 +659,20 @@ export default {
     }
 
     onMounted(async() => {
+      try {
       await store.getWebData(route.params.name);
       await store.getCalendarData(route.params.name);
       await store.getWeddingData(route.params.name);
       await store.getRSVPData(route.params.name);
       await store.getConfigData(route.params.name);
+
+      if (!webData.value || webData.value.web_path !== route.params.name) {
+          router.push({ name: 'Error404' });
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        router.push({ name: 'Error404' });
+      }
     })
 
     const themeColor = computed(() => configData.value.theme || '#348784');
