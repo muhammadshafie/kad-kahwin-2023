@@ -13,10 +13,10 @@
                   data-aos-once="true"
                   class="text-[2.5rem] sm:text-5xl xl:text-6xl font-bold leading-tight capitalize sm:pr-8 xl:pr-10"
                 >
-                  Kad <span class="text-header-gradient">Kahwin</span> Paling Santai~
+                  Kad Kahwin<span class="text-header-gradient"> Digital</span> Paling Santai~
                 </h1>
                 <p data-aos="fade-down" data-aos-once="true" data-aos-delay="300" class="paragraph hidden sm:block">
-                  Perkhidmatan kad kahwin yg paling mudah untuk digunakan
+                  Perkhidmatan kad kahwin digital yg paling mudah untuk digunakan
                 </p>
                 <div
                   data-aos="fade-up"
