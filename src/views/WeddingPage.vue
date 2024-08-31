@@ -3,6 +3,47 @@
       style="max-width: 428px"
       class="min-w-screen min-h-screen flex items-center justify-center bg-white text-gray-800 shadow-xl h-full"
     >
+    <!-- ========= Popup ========= -->
+    <TransitionRoot as="template" :show="isOpenPopup">
+      <Dialog class="relative z-10" @close="isOpenPopup = false">
+        <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
+          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+        </TransitionChild>
+
+        <div style="max-width: 428px; margin: 0 auto" class="fixed inset-0 z-10 w-screen overflow-y-auto">
+          <div class="flex h-full items-end justify-center text-center sm:items-center">
+          <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+            <DialogPanel class="relative transform overflow-hidden bg-white text-left shadow-xl transition-all h-full my-auto w-full">
+              <div class="absolute inset-0 flex justify-center content-center items-center z-0">
+                <div class="text-gray-300 syne text-wrap opacity-20 text-[80px] text-center font-extrabold transform -rotate-12 whitespace-nowrap">
+                  <template v-for="(item, index) in WelcomeJSON" :key="index">
+                    {{item.welcome + ' • '}}
+                  </template>
+                </div>
+              </div>
+              <div class="bg-white h-full flex flex-col justify-center content-center items-center z-20">
+                <div class="col-12 mb-5 justify-center content-center items-center">
+                  <p class="text-gray-500 mb-5">Click to open (Tekan untuk buka)</p>
+                  <ArrowLongDownIcon class="animate-bounce h-6 w-6 text-gray-500 mx-auto" />
+                </div>
+                <div class="col-12 text-center p-10 rounded-[50%] cursor-pointer z-20 " 
+                :class="primaryColor == null ? 'animate-pulse bg-gray-500' : ''"
+                @click="isOpenPopup = false" 
+                :style="{background: `${primaryColor}`,color: `${secondaryColor}`}">
+                    <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.first_name}}</h1>
+                    <h1 class="great-vibes-regular text-xl font-bold">&</h1>
+                    <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.second_name}}</h1>
+                </div>
+                <button ref="dialogRef" ></button>
+              </div>
+            </DialogPanel>
+          </TransitionChild>
+        </div>
+        </div>
+      </Dialog>
+    </TransitionRoot>
+
+
       <!-- ============ First Section ============ -->
       <div class="bg-white h-full w-full px-5 pt-5">
         <div class="mb-8">
@@ -184,7 +225,40 @@
             </div>
           </div>
         </div>
+
+        <!-- Doa Section -->
+
+        <div class="mb-8">
+          <div 
+          :style="{
+            background: secondaryColor
+          }"
+            class="cursor-pointer block rounded-lg flex justify-center p-5 transform transition-all duration-300 scale-100 hover:scale-[.98]"
+          >
+            <div class="text-black text-center wrap">
+                <div class="pb-5">
+                  <p>Ya Allah Ya Rahman Ya Rahim,</p>
+                  <p>berkatilah majlis perkahwinan ini.</p>
+                  <p>Limpahkanlah baraqah dan rahmatMu kepada kedua mempelai ini. Kurniakanlah mereka kelak zuriat yang soleh dan solehah. Kekalkanlah jodoh mereka hingga ke jannah.</p>
+                </div>
+                <div class="">
+                  <p>{{webData.hashtag}}</p>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="">
+            <div 
+              
+                class="cursor-pointer block rounded-lg items-center content-center text-center justify-center transform transition-all duration-300 scale-100 hover:scale-[.98]"
+              >
+              <p>Direka oleh:</p>
+              <a href="/"><img src="https://shafieramli.com/kad-kahwin/images/logo/shafie-logo.png" class="w-[150px] h-auto mx-auto text-center"></a>
+            </div>
+        </div>
         
+
   
         <!-- =========== Sticky Navigation =========== -->
         <div
@@ -588,6 +662,7 @@
     </div>
   </template>
 <script>
+import WelcomeJSON from '@/assets/welcome.json'
 import { Countdown } from 'vue3-flip-countdown'
 import { useStore } from '@/stores/store';
 import { storeToRefs } from 'pinia';
@@ -603,7 +678,7 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue';
-import { XMarkIcon,MapPinIcon,PhoneIcon,DevicePhoneMobileIcon, PencilSquareIcon } from '@heroicons/vue/24/outline';
+import { XMarkIcon,MapPinIcon,PhoneIcon,DevicePhoneMobileIcon, PencilSquareIcon,ArrowLongDownIcon } from '@heroicons/vue/24/outline';
 
 export default {
     name: "WeddingPage",
@@ -620,6 +695,7 @@ export default {
         PhoneIcon,
         DevicePhoneMobileIcon,
         PencilSquareIcon,
+        ArrowLongDownIcon,
     },
     setup() {
     const store = useStore();
@@ -627,6 +703,7 @@ export default {
     const route = useRoute()
     const router = useRouter()
     const isOpen = ref(false)
+    const isOpenPopup = ref(true)
     const dialogRef = ref(null)
     const isOpenContact = ref(false)
     const isOpenRsvpDialog = ref(false)
@@ -828,7 +905,8 @@ export default {
         secondaryColor,
         themeColor,
         tentativeTimeColor,
-        tentativeTimeBg
+        tentativeTimeBg,isOpenPopup,
+        WelcomeJSON
     }
     }
 }

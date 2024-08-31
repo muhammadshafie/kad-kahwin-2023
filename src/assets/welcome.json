@@ -1,0 +1,9 @@
+[
+  { "language": "English", "welcome": "Welcome" },
+  { "language": "Arabic", "welcome": "أهلا بك" },
+  { "language": "Chinese", "welcome": "欢迎" },
+  { "language": "Malay", "welcome": "Selamat datang" },
+  { "language": "Hindi", "welcome": "स्वागत है" },
+  { "language": "Japanese", "welcome": "ようこそ" },
+  { "language": "Korean", "welcome": "환영합니다" }
+]
