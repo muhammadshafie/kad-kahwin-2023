@@ -553,7 +553,7 @@
                               :name="rsvpData.attendance"
                               value="Tidak Hadir"
                               id="radioButton2"
-                              class="h-5 w-5 checked:before:content-['✔'] checked:before:text-[24px] "
+                              class="h-5 w-5"
                             />
                             <label
                               for="radioButton2"
