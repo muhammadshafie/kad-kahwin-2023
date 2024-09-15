@@ -280,12 +280,12 @@
           </div>
         </div>
 
-        <div class="hidden">
+        <div ref="playerContainer">
           <video
             ref="videoPlayer"
             class="video-js vjs-default-skin vjs-big-play-centered"
-            controls
             preload="auto"
+            playsinline
             width="388"
             height="auto"
           ></video>
@@ -713,6 +713,7 @@ import { XMarkIcon,MapPinIcon,PhoneIcon,DevicePhoneMobileIcon, PencilSquareIcon,
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 import 'videojs-youtube';
+import { document } from 'postcss';
 
 export default {
     name: "WeddingPage",
@@ -742,6 +743,7 @@ export default {
     const isOpenContact = ref(false)
     const isOpenRsvpDialog = ref(false)
     const videoPlayer = ref(null)
+    const playerContainer = ref(null)
     let player = null
     const musicToggle = ref(false)
 
@@ -771,6 +773,22 @@ export default {
       isOpenRsvpDialog.value = false;
     }
 
+    // Function to initialize the video player
+    const initializePlayer = () => {
+      player = videojs(videoPlayer.value, {
+        techOrder: ['youtube'],
+        loop: true,
+        playsinline: true,
+        sources: [
+          {
+            src: `https://www.youtube.com/watch?v=${configData?.value?.music_id}`,
+            type: 'video/youtube',
+          },
+        ],
+      });
+    };
+
+
     onMounted(async() => {
       try {
       await store.getWebData(route.params.name);
@@ -779,27 +797,20 @@ export default {
       await store.getRSVPData(route.params.name);
       await store.getConfigData(route.params.name);
 
+      
       if (!webData.value || webData.value.web_path !== route.params.name) {
           router.push({ name: 'Error404' });
+        }
+        else {
+          initializePlayer();
         }
       } catch (error) {
         console.error("Error fetching data:", error);
         router.push({ name: 'Error404' });
       }
 
-      // Initialize video.js player
-      player = videojs(videoPlayer.value, {
-        techOrder: ['youtube'],
-        loop: true,
-        sources: [
-          {
-            src: `https://www.youtube.com/watch?v=${configData?.value?.music_id}`,
-            type: 'video/youtube',
-          },
-        ],
-      });
     })
-
+    
     onBeforeUnmount(() => {
       if (player) {
         player.dispose();
@@ -815,26 +826,24 @@ export default {
     const playMusic = () => {
       if(player) {
         player.play()
-        // console.log('play')
-      }
-    }
-
-    const pauseMusic = () => {
-      console.log(musicToggle.value)
-      if(!musicToggle.value) {
-        if(player) {
-        player.pause()
-        // console.log('pause')
-      }
-      } else {
-        if(player) {
-          player.play()
-          // console.log('play')
+        if(playerContainer.value){
+          playerContainer.value.classList.add('hidden')
         }
       }
-    }
+    };
 
-
+    const pauseMusic = () => {
+      if (player) {
+        if (musicToggle.value === true) {
+          // console.log(player)
+          player.play().catch(error => {
+            console.error('Playback error:', error);
+          });
+        } else {
+          player.pause();
+        }
+      }
+    };
 
     const handleSubmit = (event) => {
       event.preventDefault(); // Prevent the default form submission
@@ -986,6 +995,7 @@ export default {
         tentativeTimeBg,isOpenPopup,
         WelcomeJSON,
         videoPlayer,
+        playerContainer,
         playMusic,
         pauseMusic,
         musicToggle
