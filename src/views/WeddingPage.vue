@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-12 text-center p-10 rounded-[50%] cursor-pointer z-20 " 
                 :class="primaryColor == null ? 'animate-pulse bg-gray-500' : ''"
-                @click="isOpenPopup = false" 
+                @click="isOpenPopup = false; playMusic()" 
                 :style="{background: `${primaryColor}`,color: `${secondaryColor}`}">
                     <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.first_name}}</h1>
                     <h1 class="great-vibes-regular text-xl font-bold">&</h1>
@@ -259,7 +259,38 @@
         </div>
         
 
-  
+        <!-- =========== Floating Video Player act as Music Button using VideoJS =========== -->
+
+        <div
+          class="sticky bottom-28 flex items-center justify-end cursor-pointer"
+          @click="pauseMusic(); musicToggle = !musicToggle"
+        >
+          <div :style="{
+              background: primaryColor
+            }" class="flex items-center text-white justify-center w-11 h-11 rounded-full cursor-pointer relative overflow-hidden transition-all duration-200 shadow-lg animate-[spin_4s_linear_infinite]">
+            <svg
+              class="h-8 w-8"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path d="M14 1.75a.75.75 0 0 0-.89-.737l-7.502 1.43a.75.75 0 0 0-.61.736v2.5c0 .018 0 .036.002.054V9.73a1 1 0 0 1-.813.983l-.58.11a1.978 1.978 0 0 0 .741 3.886l.603-.115c.9-.171 1.55-.957 1.55-1.873v-1.543l-.001-.043V6.3l6-1.143v3.146a1 1 0 0 1-.813.982l-.584.111a1.978 1.978 0 0 0 .74 3.886l.326-.062A2.252 2.252 0 0 0 14 11.007V1.75Z"></path>
+            </svg>
+          </div>
+        </div>
+
+        <div class="hidden">
+          <video
+            ref="videoPlayer"
+            class="video-js vjs-default-skin vjs-big-play-centered"
+            controls
+            preload="auto"
+            width="388"
+            height="auto"
+          ></video>
+        </div>
+
         <!-- =========== Sticky Navigation =========== -->
         <div
           class="sticky bottom-2 p-5 px-6 m-2 flex items-center justify-between backdrop-blur-sm bg-white/20 shadow-3xl text-gray-400 rounded-2xl cursor-pointer"
@@ -666,7 +697,7 @@ import WelcomeJSON from '@/assets/welcome.json'
 import { Countdown } from 'vue3-flip-countdown'
 import { useStore } from '@/stores/store';
 import { storeToRefs } from 'pinia';
-import { onMounted, computed, ref  } from 'vue';
+import { onMounted, computed, ref, onBeforeUnmount } from 'vue';
 import { useRoute } from 'vue-router';
 import { useRouter } from 'vue-router';
 import { convertToHijri } from "@/utils/convertToHijri"
@@ -679,6 +710,9 @@ import {
   DialogTitle,
 } from '@headlessui/vue';
 import { XMarkIcon,MapPinIcon,PhoneIcon,DevicePhoneMobileIcon, PencilSquareIcon,ArrowLongDownIcon } from '@heroicons/vue/24/outline';
+import videojs from 'video.js';
+import 'video.js/dist/video-js.css';
+import 'videojs-youtube';
 
 export default {
     name: "WeddingPage",
@@ -707,7 +741,9 @@ export default {
     const dialogRef = ref(null)
     const isOpenContact = ref(false)
     const isOpenRsvpDialog = ref(false)
-    
+    const videoPlayer = ref(null)
+    let player = null
+    const musicToggle = ref(false)
 
     const closeModal = () => {
       isOpen.value = false;
@@ -750,13 +786,55 @@ export default {
         console.error("Error fetching data:", error);
         router.push({ name: 'Error404' });
       }
+
+      // Initialize video.js player
+      player = videojs(videoPlayer.value, {
+        techOrder: ['youtube'],
+        loop: true,
+        sources: [
+          {
+            src: `https://www.youtube.com/watch?v=${configData?.value?.music_id}`,
+            type: 'video/youtube',
+          },
+        ],
+      });
     })
+
+    onBeforeUnmount(() => {
+      if (player) {
+        player.dispose();
+      }
+    });
 
     const themeColor = computed(() => configData.value.theme || '#348784');
     const tentativeTimeColor = computed(() => configData.value.tentative_time_text || '#059669');
     const tentativeTimeBg = computed(() => configData.value.tentative_time_bg || '#d1fae5');
     const primaryColor = computed(() =>  configData.value ? configData.value.theme : '')
     const secondaryColor = computed(() =>  configData.value ? configData.value.secondary_theme : '')
+
+    const playMusic = () => {
+      if(player) {
+        player.play()
+        // console.log('play')
+      }
+    }
+
+    const pauseMusic = () => {
+      console.log(musicToggle.value)
+      if(!musicToggle.value) {
+        if(player) {
+        player.pause()
+        // console.log('pause')
+      }
+      } else {
+        if(player) {
+          player.play()
+          // console.log('play')
+        }
+      }
+    }
+
+
 
     const handleSubmit = (event) => {
       event.preventDefault(); // Prevent the default form submission
@@ -906,7 +984,11 @@ export default {
         themeColor,
         tentativeTimeColor,
         tentativeTimeBg,isOpenPopup,
-        WelcomeJSON
+        WelcomeJSON,
+        videoPlayer,
+        playMusic,
+        pauseMusic,
+        musicToggle
     }
     }
 }

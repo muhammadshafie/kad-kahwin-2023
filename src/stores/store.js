@@ -41,7 +41,7 @@ export const useStore = defineStore('store', {
       try {
         const tab = 'rsvp'
         const response = await getData(tab)
-        this.rsvpData = response.filter((item)=> item.name === name)[0]
+        this.rsvpData = response?.filter((item)=> item.name === name)[0]
       } catch (error) {
         console.error(error)
       }
@@ -50,7 +50,7 @@ export const useStore = defineStore('store', {
       try {
         const tab = 'web_config'
         const response = await getData(tab)
-        this.configData = response.filter((item)=> item.web_path === name)[0]
+        this.configData = response?.filter((item)=> item.web_path === name)[0]
       } catch (error) {
         console.error(error)
       }
