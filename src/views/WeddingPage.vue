@@ -596,6 +596,7 @@
                         </div>
                         <div class="">
                           <button
+                            ref="submitButton"
                             type="submit"
                             class="
                               h-10
@@ -611,7 +612,7 @@
                           >
                             Submit RSVP
                           </button>
-                          <p id="submitRespond" class="text-gray-700 hidden">Thank You for Your RSVP Registration</p>
+                          <p id="submitRespond" ref="submitRespond" class="text-gray-700 hidden">Thank You for Your RSVP Registration</p>
                         </div>
                       </form>
                     </div>
@@ -713,7 +714,6 @@ import { XMarkIcon,MapPinIcon,PhoneIcon,DevicePhoneMobileIcon, PencilSquareIcon,
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 import 'videojs-youtube';
-import { document } from 'postcss';
 
 export default {
     name: "WeddingPage",
@@ -746,6 +746,8 @@ export default {
     const playerContainer = ref(null)
     let player = null
     const musicToggle = ref(false)
+    const submitButton = ref(null)
+    const submitRespond = ref(null)
 
     const closeModal = () => {
       isOpen.value = false;
@@ -858,8 +860,14 @@ export default {
       })
         .then(() => {
           // Hide the form and display the success message
-          document.querySelector('#rsvpForm button').style.display = 'none';
-          document.querySelector('#rsvpForm #submitRespond').style.display = 'block';
+          // document.querySelector('#rsvpForm button').style.display = 'none';
+          if(submitButton.value) {
+            submitButton.value.classList.add('hidden')
+          }
+          if (submitRespond.value) {
+            submitRespond.value.classList.remove('hidden')
+          }
+          // document.querySelector('#rsvpForm #submitRespond').style.display = 'block';
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -998,7 +1006,9 @@ export default {
         playerContainer,
         playMusic,
         pauseMusic,
-        musicToggle
+        musicToggle,
+        submitButton,
+        submitRespond
     }
     }
 }
