@@ -1,7 +1,6 @@
 <template lang="">
     <div
-      style="max-width: 428px"
-      class="min-w-screen min-h-screen flex items-center justify-center bg-white text-gray-800 shadow-xl h-full"
+      class="max-w-[428px] min-w-screen min-h-screen flex items-center justify-center bg-white text-gray-800 shadow-xl h-full"
     >
     <!-- ========= Popup ========= -->
     <TransitionRoot as="template" :show="isOpenPopup">
@@ -10,7 +9,7 @@
           <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </TransitionChild>
 
-        <div style="max-width: 428px; margin: 0 auto" class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div class="max-w-[428px] fixed inset-0 z-10 w-full overflow-y-auto mx-auto">
           <div class="flex h-full items-end justify-center text-center sm:items-center">
           <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
             <DialogPanel class="relative transform overflow-hidden bg-white text-left shadow-xl transition-all h-full my-auto w-full">
@@ -22,17 +21,31 @@
                 </div>
               </div>
               <div class="bg-white h-full flex flex-col justify-center content-center items-center z-20">
-                <div class="col-12 mb-5 justify-center content-center items-center">
-                  <p class="text-gray-500 mb-5">Click to open (Tekan untuk buka)</p>
-                  <ArrowLongDownIcon class="animate-bounce h-6 w-6 text-gray-500 mx-auto" />
-                </div>
+                <template v-if="primaryColor != null">
+                  <div class="col-12 mb-5 justify-center content-center items-center">
+                    <p class="text-gray-500 mb-5">Click to open (Tekan untuk buka)</p>
+                    <ArrowLongDownIcon class="animate-bounce h-6 w-6 text-gray-500 mx-auto" />
+                  </div>
+                </template>
+                <template v-else>
+                  <div class="col-12 mb-5 justify-center content-center items-center">
+                    <p class="text-gray-500 mb-5">Processing...</p>
+                    <ArrowLongDownIcon class="animate-bounce h-6 w-6 text-gray-500 mx-auto" />
+                  </div>
+                </template>
                 <div class="col-12 text-center p-10 rounded-[50%] cursor-pointer z-20 " 
                 :class="primaryColor == null ? 'animate-pulse bg-gray-500' : ''"
                 @click="isOpenPopup = false; playMusic()" 
                 :style="{background: `${primaryColor}`,color: `${secondaryColor}`}">
-                    <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.first_name}}</h1>
-                    <h1 class="great-vibes-regular text-xl font-bold">&</h1>
-                    <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.second_name}}</h1>
+                  <template v-if="primaryColor == null">
+                    <h1 class="great-vibes-regular text-5xl font-bold capitalize">Please</h1>
+                    <h1 class="great-vibes-regular text-5xl font-bold capitalize">Wait</h1>
+                  </template>
+                    <template v-else>
+                      <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.first_name}}</h1>
+                      <h1 class="great-vibes-regular text-xl font-bold">&</h1>
+                      <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.second_name}}</h1>
+                    </template>
                 </div>
                 <button ref="dialogRef" ></button>
               </div>
