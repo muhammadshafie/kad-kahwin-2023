@@ -1,6 +1,6 @@
 <template lang="">
     <div
-      class="max-w-[428px] min-w-screen min-h-screen flex items-center justify-center bg-white text-gray-800 shadow-xl h-full"
+      class="max-w-md min-w-screen min-h-screen flex items-center justify-center bg-white text-gray-800 shadow-xl h-full"
     >
     <!-- ========= Popup ========= -->
     <TransitionRoot as="template" :show="isOpenPopup">
@@ -9,7 +9,7 @@
           <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </TransitionChild>
 
-        <div class="max-w-[428px] fixed inset-0 z-10 w-full overflow-y-auto mx-auto">
+        <div class="max-w-md fixed inset-0 z-10 w-full overflow-y-auto mx-auto">
           <div class="flex h-full items-end justify-center text-center sm:items-center">
           <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
             <DialogPanel class="relative transform overflow-hidden bg-white text-left shadow-xl transition-all h-full my-auto w-full">
@@ -296,7 +296,7 @@
         <div ref="playerContainer">
           <video
             ref="videoPlayer"
-            class="video-js vjs-default-skin vjs-big-play-centered"
+            class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid"
             preload="auto"
             playsinline
             width="388"
