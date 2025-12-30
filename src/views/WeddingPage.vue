@@ -43,8 +43,8 @@
                 >
                   <template v-if="primaryColor == null">
                     <div class="text-center">
-                      <h1 class="great-vibes-regular text-3xl sm:text-5xl font-bold capitalize break-words whitespace-normal">Please</h1>
-                      <h1 class="great-vibes-regular text-3xl sm:text-5xl font-bold capitalize break-words whitespace-normal">Wait</h1>
+                      <h1 class="great-vibes-regular text-5xl sm:text-5xl font-bold capitalize break-words whitespace-normal">Please</h1>
+                      <h1 class="great-vibes-regular text-5xl sm:text-5xl font-bold capitalize break-words whitespace-normal">Wait</h1>
                     </div>
                   </template>
                   <template v-else>
