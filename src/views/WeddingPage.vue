@@ -151,7 +151,7 @@
               }"
                 class="rounded-full align-center text-white text-xs py-1 px-2 leading-none"
               >
-                <span class="text-center">Lokasi, Tarik, Masa</span>
+                <span class="text-center">Lokasi, Tarikh, Masa</span>
               </div>
             </div>
             <div class="text-black text-center">
