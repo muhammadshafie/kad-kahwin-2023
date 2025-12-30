@@ -33,19 +33,27 @@
                     <ArrowLongDownIcon class="animate-bounce h-6 w-6 text-gray-500 mx-auto" />
                   </div>
                 </template>
-                <div class="col-12 text-center p-10 rounded-[50%] cursor-pointer z-20 " 
-                :class="primaryColor == null ? 'animate-pulse bg-gray-500' : ''"
-                @click="isOpenPopup = false; playMusic()" 
-                :style="{background: `${primaryColor}`,color: `${secondaryColor}`}">
+                <!-- Make this an exact circle by forcing equal width/height and centering text.
+                     Use `rounded-full` and allow long names to wrap with `break-words` and responsive font sizes. -->
+                <div
+                  class="col-12 text-center rounded-full cursor-pointer z-20 flex items-center justify-center w-60 h-60 sm:w-56 sm:h-56 p-6"
+                  :class="primaryColor == null ? 'animate-pulse bg-gray-500' : ''"
+                  @click="isOpenPopup = false; playMusic()"
+                  :style="{ background: `${primaryColor}`, color: `${secondaryColor}` }"
+                >
                   <template v-if="primaryColor == null">
-                    <h1 class="great-vibes-regular text-5xl font-bold capitalize">Please</h1>
-                    <h1 class="great-vibes-regular text-5xl font-bold capitalize">Wait</h1>
+                    <div class="text-center">
+                      <h1 class="great-vibes-regular text-3xl sm:text-5xl font-bold capitalize break-words whitespace-normal">Please</h1>
+                      <h1 class="great-vibes-regular text-3xl sm:text-5xl font-bold capitalize break-words whitespace-normal">Wait</h1>
+                    </div>
                   </template>
-                    <template v-else>
-                      <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.first_name}}</h1>
+                  <template v-else>
+                    <div class="text-center">
+                      <h1 class="great-vibes-regular text-5xl sm:text-5xl font-bold capitalize break-words whitespace-normal">{{webData.first_name}}</h1>
                       <h1 class="great-vibes-regular text-xl font-bold">&</h1>
-                      <h1 class="great-vibes-regular text-5xl font-bold capitalize">{{webData.second_name}}</h1>
-                    </template>
+                      <h1 class="great-vibes-regular text-5xl sm:text-5xl font-bold capitalize break-words whitespace-normal">{{webData.second_name}}</h1>
+                    </div>
+                  </template>
                 </div>
                 <button ref="dialogRef" ></button>
               </div>
